@@ -2,6 +2,14 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    
+<meta name="theme-color" content="#21130f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Schokoladenspiel">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>🍫 Das Schokoladenspiel</title>
@@ -1030,6 +1038,17 @@ $("reset-stats").addEventListener("click", () => {
 updateStats();
 $("bot-field").hidden = !isBotMode();
 newGame();
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./service-worker.js")
+        .catch((error) => {
+          console.error("Offline-Unterstützung konnte nicht aktiviert werden:", error);
+        });
+    });
+  }
 </script>
 
 </body>
